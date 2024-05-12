@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { AuthContext } from "../AuthProvider/AuthProvider"
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 
 const Navbar = () => {
 
@@ -16,21 +16,25 @@ const Navbar = () => {
     return (
         <div className='navbar bg-base-100 shadow-sm container px-4 mx-auto'>
             <div className='flex-1'>
-                <div className='flex gap-2 items-center'>
+                <button className='flex gap-2 items-center'>
                     <img className='w-auto h-7' src='' alt='' />
-                    <Link to={'/'} className='font-bold'>SoloSphere</Link>
-                </div>
+                    <Link to={'/'} className='font-bold'>Volunteer</Link>
+                </button>
             </div>
             <div className='flex-none'>
                 <ul className='menu menu-horizontal px-1'>
                     <li>
-                        <div>Home</div>
+                        <p><NavLink to='/' className={({ isActive }) => isActive ? 'text-primary font-bold ' : 'font-bold'}>Home</NavLink></p>
                     </li>
 
+                    <li>
+                        <p><NavLink to='/' className={({ isActive }) => isActive ? 'text-primary font-bold ' : 'font-bold'}>Need Volunteer Page</NavLink></p>
+
+                    </li>
                     {
                         !user && (
                             <li>
-                                <Link to={'/login'}>Login</Link>
+                                <Link to={'/login'}><p><NavLink className={({ isActive }) => isActive ? 'text-primary font-bold ' : 'font-bold'}>Login</NavLink></p></Link>
                             </li>
                         )
                     }
@@ -44,11 +48,11 @@ const Navbar = () => {
                                 role='button'
                                 className='btn btn-ghost btn-circle avatar'
                             >
-                                <div className='w-10 rounded-full' title=''>
+                                <div title={user?.displayName} className='w-10 rounded-full'>
                                     <img
                                         referrerPolicy='no-referrer'
                                         alt='User Profile Photo'
-                                        src=''
+                                        src={user?.photoURL}
                                     />
                                 </div>
                             </div>
@@ -56,20 +60,17 @@ const Navbar = () => {
                                 tabIndex={0}
                                 className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
                             >
+                                
                                 <li>
-                                    <div className='justify-between'>Add Job</div>
+                                    <div><p><NavLink to='/' className={({ isActive }) => isActive ? 'text-primary font-bold ' : 'font-bold'}>Add Volunteer Post</NavLink></p></div>
                                 </li>
                                 <li>
-                                    <div>My Posted Jobs</div>
+                                    <div><p><NavLink to='/' className={({ isActive }) => isActive ? 'text-primary font-bold ' : 'font-bold'}>Manage My Post</NavLink></p></div>
                                 </li>
-                                <li>
-                                    <div>My Bids</div>
-                                </li>
-                                <li>
-                                    <div>Bid Requests</div>
-                                </li>
+                                
                                 <li className='mt-2'>
-                                    <button className='bg-gray-200 block text-center'>Logout</button>
+                                    <button onClick={handleLogOut} className='bg-gray-200 block text-center'>Logout</button>
+
                                 </li>
                             </ul>
                         </div>

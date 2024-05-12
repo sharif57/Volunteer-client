@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import {
@@ -10,11 +9,13 @@ import Layout from './layout/Layout';
 import AuthProvider from './AuthProvider/AuthProvider';
 import Login from './Components/Login';
 import Register from './Components/Register';
+import Error from './Components/Error';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout></Layout>,
+    errorElement:<Error></Error>,
     children: [
       {
         path: "/",
