@@ -62,7 +62,7 @@ const Navbar = () => {
                             >
                                 
                                 <li>
-                                    <div><p><NavLink to='/' className={({ isActive }) => isActive ? 'text-primary font-bold ' : 'font-bold'}>Add Volunteer Post</NavLink></p></div>
+                                    <div><p><NavLink to='addData' className={({ isActive }) => isActive ? 'text-primary font-bold ' : 'font-bold'}>Add Volunteer Post</NavLink></p></div>
                                 </li>
                                 <li>
                                     <div><p><NavLink to='/' className={({ isActive }) => isActive ? 'text-primary font-bold ' : 'font-bold'}>Manage My Post</NavLink></p></div>
