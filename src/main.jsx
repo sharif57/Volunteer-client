@@ -12,6 +12,7 @@ import Register from './Components/Register';
 import Error from './Components/Error';
 import AddData from './pages/AddData';
 import CardDetails from './pages/CardDetails';
+import BeVolunteer from './pages/BeVolunteer';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,7 @@ const router = createBrowserRouter([
         element: <CardDetails></CardDetails>,
         loader: ({ params }) => fetch(`http://localhost:5000/volunteerInfo/${params.id}`)
       },
+      
     ]
   },
 ]);

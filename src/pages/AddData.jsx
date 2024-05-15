@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const AddData = () => {
-    const  {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const handleAddItem = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -19,7 +19,7 @@ const AddData = () => {
         const OrganizerEmail = form.OrganizerEmail.value;
 
         const newUsers = { Thumbnail, PostTitle, Description, Category, Location, VolunteersNeeded, Deadline, OrganizerEmail, OrganizerName }
-        console.log(newUsers);
+        // console.log(newUsers);
 
         // send data to server
         fetch('http://localhost:5000/volunteerInfo', {
@@ -202,6 +202,7 @@ const AddData = () => {
 
                                         name="OrganizerName"
                                         className="mt-1 w-full border border-black p-4 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                                        defaultValue={user.displayName}
                                     />
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
@@ -213,6 +214,7 @@ const AddData = () => {
                                         type="text"
                                         name="OrganizerEmail"
                                         className="mt-1 w-full border border-black p-4 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                                        defaultValue={user.email}
                                     />
                                 </div>
 
