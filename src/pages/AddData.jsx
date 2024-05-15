@@ -1,5 +1,48 @@
+import { useContext } from "react";
+import Swal from "sweetalert2";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const AddData = () => {
+    const  {user} = useContext(AuthContext)
+    const handleAddItem = (e) => {
+        e.preventDefault();
+        const form = e.target;
+
+        const Thumbnail = form.Thumbnail.value;
+        const PostTitle = form.PostTitle.value;
+        const Description = form.Description.value;
+        const Category = form.Category.value;
+        const Location = form.Location.value;
+        const VolunteersNeeded = form.VolunteersNeeded.value;
+        const Deadline = form.Deadline.value;
+        const OrganizerName = form.OrganizerName.value;
+        const OrganizerEmail = form.OrganizerEmail.value;
+
+        const newUsers = { Thumbnail, PostTitle, Description, Category, Location, VolunteersNeeded, Deadline, OrganizerEmail, OrganizerName }
+        console.log(newUsers);
+
+        // send data to server
+        fetch('http://localhost:5000/volunteerInfo', {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(newUsers)
+        })
+
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'User Added Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                }
+            })
+    }
     return (
         <div>
 
@@ -29,12 +72,12 @@ const AddData = () => {
                             </a>
 
                             <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-                                Welcome to Squid 🦑
+                                Welcome to the Volunteer platform! 🦑
                             </h2>
 
                             <p className="mt-4 leading-relaxed text-white/90">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam dolorum aliquam,
-                                quibusdam aperiam voluptatum.
+                                Volunteers can sign up for opportunities they are interested in and contribute their time and skills to meaningful causes.
+
                             </p>
                         </div>
                     </section>
@@ -63,16 +106,16 @@ const AddData = () => {
                                 </a>
 
                                 <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-                                    Welcome to Squid 🦑
+
+                                    Welcome to the Volunteer platform!  🦑
                                 </h1>
 
                                 <p className="mt-4 leading-relaxed text-gray-500">
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam dolorum aliquam,
-                                    quibusdam aperiam voluptatum.
+                                    Volunteers can sign up for opportunities they are interested in and contribute their time and skills to meaningful causes.
                                 </p>
                             </div>
 
-                            <form action="#" className="mt-8 grid grid-cols-6 gap-6">
+                            <form onSubmit={handleAddItem} action="#" className="mt-8 grid grid-cols-6 gap-6">
                                 <div className="col-span-6 sm:col-span-3">
                                     <label htmlFor="FirstName" className="block text-sm font-medium text-gray-700">
                                         Thumbnail
@@ -109,7 +152,7 @@ const AddData = () => {
                                 </div>
 
                                 <div className="col-span-6 sm:col-span-3">
-                                    <label className="block text-sm font-medium text-gray-700"> Password </label>
+                                    <label className="block text-sm font-medium text-gray-700"> Category </label>
 
                                     <input
                                         type="text"
@@ -118,7 +161,7 @@ const AddData = () => {
                                     />
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
-                                    <label className="block text-sm font-medium text-gray-700"> Password </label>
+                                    <label className="block text-sm font-medium text-gray-700"> Location </label>
 
                                     <input
                                         type="text"
@@ -129,7 +172,7 @@ const AddData = () => {
 
                                 <div className="col-span-6 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">
-                                    Volunteers Needed
+                                        Volunteers Needed
                                     </label>
 
                                     <input
@@ -150,43 +193,28 @@ const AddData = () => {
                                     />
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
-                                    <label  className="block text-sm font-medium text-gray-700">
-                                    OrganizerName
+                                    <label className="block text-sm font-medium text-gray-700">
+                                        OrganizerName
                                     </label>
 
                                     <input
                                         type="text"
-                                      
+
                                         name="OrganizerName"
                                         className="mt-1 w-full border border-black p-4 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                                     />
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">
-                                    Organizer Email
+                                        Organizer Email
                                     </label>
 
                                     <input
-                                        type="email"
+                                        type="text"
                                         name="OrganizerEmail"
                                         className="mt-1 w-full border border-black p-4 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                                     />
                                 </div>
-
-                                {/* <div className="col-span-6">
-                                    <label htmlFor="MarketingAccept" className="flex gap-4">
-                                        <input
-                                            type="checkbox"
-                                            id="MarketingAccept"
-                                            name="marketing_accept"
-                                            className="size-5 rounded-md border-gray-200 bg-white shadow-sm"
-                                        />
-
-                                        <span className="text-sm text-gray-700">
-                                            I want to receive emails about events, product updates and company announcements.
-                                        </span>
-                                    </label>
-                                </div> */}
 
                                 <div className="col-span-6">
                                     <p className="text-sm text-gray-500">
@@ -201,10 +229,10 @@ const AddData = () => {
                                     <button
                                         className="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 w-full py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500"
                                     >
-                                        Create an account
+                                        Add Post
                                     </button>
 
-                                    
+
                                 </div>
                             </form>
 
