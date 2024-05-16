@@ -1,27 +1,24 @@
-// import { useContext, useEffect, useState } from "react";
-// import { AuthContext } from "../AuthProvider/AuthProvider";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import axios from "axios";
 
-// const MyCard = () => {
+const MyCard = () => {
+    const { user } = useContext(AuthContext)
+    const [item, setItem] = useState([])
+    useEffect(() => {
+        const getData = async () => {
+            const { data } = await axios(`http://localhost:5000/volunteerInfo/${user?.email}`)
+            setItem(data)
+        }
+        getData()
+    }, [user])
 
-//     const {user} = useContext(AuthContext)
-//     const [item, setItem] =useState([])
+    console.log(item);
+    return (
+        <div>
+            <h2>hello {item.length}</h2>
+        </div>
+    );
+};
 
-//     useEffect(() => {
-//         fetch(`http://localhost:5000/volunteerInfo/${user?.email}`)
-//             .then(res => res.json())
-//             .then(data => {
-//                 setItem(data);
-//             })
-//     }, [user])
-//     return (
-//         <div>
-//             {
-//                 item?.map(p => (<div key={p._id}>
-//                     <h2>hello</h2>
-//                 </div>))
-//             }
-//         </div>
-//     );
-// };
-
-// export default MyCard;
+export default MyCard;

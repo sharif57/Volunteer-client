@@ -212,7 +212,7 @@ fetch('http://localhost:5000/volunteerInfo', {
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">
-                                        Organizer Email
+                                         Email
                                     </label>
 
                                     <input

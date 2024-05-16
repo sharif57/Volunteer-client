@@ -17,7 +17,7 @@ const Card = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-16 gap-6">
                 {
-                    volunteer.slice(0,6).map(v => <div key={v._id} >
+                    volunteer.slice(0, 6).map(v => <div key={v._id} >
 
 
                         <article className="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-lg">
@@ -51,7 +51,7 @@ const Card = () => {
                     </div>)
                 }
 
-                <div className="w-1/2 text-center mx-auto ">
+                {/* <div className="w-1/2 text-center mx-auto ">
                     <button
                         className="group  flex items-center justify-between gap-4 rounded-lg border border-indigo-600 bg-indigo-600 px-5 py-3 transition-colors hover:bg-transparent focus:outline-none focus:ring"
                         href="#"
@@ -82,6 +82,29 @@ const Card = () => {
                         </span>
 
                     </button>
+                </div> */}
+                <div className="text-center w-1/2 mx-auto">
+                    <Link to={'/allVolunteer'}
+                        className="inline-flex items-center gap-2 rounded border border-indigo-600 bg-indigo-600 px-8 py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+                        href="#"
+                    >
+                        <span className="text-sm font-medium"> See More.. </span>
+
+                        <svg
+                            className="size-5 rtl:rotate-180"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"
+                            />
+                        </svg>
+                    </Link>
                 </div>
             </div>
         </div>
