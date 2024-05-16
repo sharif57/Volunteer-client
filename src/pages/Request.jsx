@@ -1,58 +1,51 @@
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const Request = () => {
+    const [item, setItem] = useState([])
+    const [control, setControl] = useState(false)
+
+    const handleDelete = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        })
+        fetch(`http://localhost:5000/delete/${id}`, {
+            method: 'DELETE',
+
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                // setItem(data)
+                console.log(data);
+                if (data.deletedCount > 0) {
+                    Swal.fire({
+                        title: "Canceled!",
+                        text: "Your item has been deleted.",
+                        icon: "success"
+                    });
+                    setControl(!control)
+                }
+
+            })
+
+    }
+
+
     const [volunteer, setVolunteer] = useState([])
     useEffect(() => {
         fetch('http://localhost:5000/modalInfo')
             .then(res => res.json())
             .then(data => setVolunteer(data))
-    }, [])
+    }, [control])
     return (
         <div>
-            {/*
-  Heads up! 👋
 
-  This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
-*/}
-
-            {/* <div className="overflow-x-auto">
-                <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
-                    <thead className="ltr:text-left rtl:text-right">
-                        <tr>
-                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Name</th>
-                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Date of Birth</th>
-                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Role</th>
-                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Salary</th>
-                            <th className="px-4 py-2"></th>
-                        </tr>
-                    </thead>
-
-                    <tbody className="divide-y divide-gray-200">
-                        {
-                            volunteer.map(p => <div key={p._id}>
-                                <tr>
-                                    <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">John Doe</td>
-                                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">24/05/1995</td>
-                                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">Web Developer</td>
-                                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">$120,000</td>
-                                    <td className="whitespace-nowrap px-4 py-2">
-                                        <a
-                                            href="#"
-                                            className="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700"
-                                        >
-                                            View
-                                        </a>
-                                    </td>
-                                </tr>
-                            </div>)
-                        }
-
-
-
-
-                    </tbody>
-                </table>
-            </div> */}
 
             <table className="table">
                 {/* head */}
@@ -78,16 +71,12 @@ const Request = () => {
                     {volunteer.map((item) => (
                         <tr className="hover:shadow-lg bg-gray-200" key={item._id}>
                             <th>
-                                {/* <label>
-                                    <input type="checkbox" className="checkbox" />
-                                </label> */}
+
                             </th>
                             <td>
                                 <div className="flex items-center gap-3">
                                     <div className="avatar">
-                                        {/* <div className="mask mask-squircle w-12 h-12">
-                                            <img src={item.image} alt="Avatar Tailwind CSS Component" />
-                                        </div> */}
+
                                     </div>
                                     <div>
                                         <div className="font-bold">{item.OrganizerName}</div>
@@ -104,7 +93,7 @@ const Request = () => {
                             }</td>
 
                             <th>
-                                <button
+                                <button onClick={() => handleDelete(item._id)}
                                     className="group relative inline-block text-sm font-medium text-white focus:outline-none focus:ring"
                                     href="#"
                                 >

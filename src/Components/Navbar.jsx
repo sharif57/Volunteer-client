@@ -53,7 +53,7 @@ const Navbar = () => {
                     {
                         !user && (
                             <li>
-                                <Link to={'/login'}><p><NavLink className={({ isActive }) => isActive ? 'text-primary font-bold ' : 'font-bold'}>Login</NavLink></p></Link>
+                                <p ><p><NavLink to={'/login'} className={({ isActive }) => isActive ? 'text-primary font-bold ' : 'font-bold'}>Login</NavLink></p></p>
                             </li>
                         )
                     }
@@ -92,7 +92,7 @@ const Navbar = () => {
                                     <div><p><NavLink to='request' className={({ isActive }) => isActive ? 'text-primary font-bold ' : 'font-bold'}>My Request Post</NavLink></p></div>
                                 </li>
                                 <li>
-                                    <div><p><NavLink to='/myCard' className={({ isActive }) => isActive ? 'text-primary font-bold ' : 'font-bold'}>Manage My Post</NavLink></p></div>
+                                    <div><p><NavLink to='/myCard' className={({ isActive }) => isActive ? 'text-primary font-bold ' : 'font-bold'}>My Need Volunteer Post:</NavLink></p></div>
                                 </li>
 
                                 <li className='mt-2'>
