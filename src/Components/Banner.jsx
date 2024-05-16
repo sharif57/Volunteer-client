@@ -74,11 +74,11 @@ const Banner = () => {
                     <div
                         className="bg-cover bg-center bg-no-repeat h-screen bg-sky-700 opacity-85"
                         style={{
-                            backgroundImage: "url('https://i.ibb.co/9p3S7z0/natures-beauty-captured-tranquil-mountain-landscape-generative-ai.jpg')",
+                            backgroundImage: "url('https://i.ibb.co/ssYW0Lz/medical-banner-with-doctor-patient.jpg')",
                         }}
                     >
                         <div className='flex flex-col justify-center items-center lg:p-[200px] p-9 lg:w-2/2 mx-auto'>
-                            <h1 className='lg:text-5xl text-center font-bold  mb-4 text-black text-xl bg-gradient-to-r from-pink-600 via-blue-900 to-blue-500 text-transparent bg-clip-text animate-gradient'>Modern canvas is usually made of cotton or linen</h1>
+                            <h1 className='lg:text-5xl text-center font-bold  mb-4 text-black text-xl bg-gradient-to-r from-pink-600 via-blue-900 to-blue-500 text-transparent bg-clip-text animate-gradient'>Healthcare volunteering is a noble and rewarding way to contribute .</h1>
                             <button
                                 className="inline-flex items-center gap-2 rounded border border-indigo-600 bg-indigo-600 px-8 py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
                                 href="#"

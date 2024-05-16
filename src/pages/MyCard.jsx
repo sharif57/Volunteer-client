@@ -1,8 +1,47 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import axios from "axios";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyCard = () => {
+
+    const [items, setItems] = useState([])
+    // const [control, setControl] = useState(false)
+
+    // const handleDelete = id => {
+    //     Swal.fire({
+    //         title: "Are you sure?",
+    //         text: "You won't be able to revert this!",
+    //         icon: "warning",
+    //         showCancelButton: true,
+    //         confirmButtonColor: "#3085d6",
+    //         cancelButtonColor: "#d33",
+    //         confirmButtonText: "Yes, delete it!"
+    //     })
+    //     fetch(`http://localhost:5000/delete/${id}`, {
+    //         method: 'DELETE',
+
+    //     })
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //             // setItem(data)
+    //             console.log(data);
+    //             if (data.deletedCount > 0) {
+    //                 Swal.fire({
+    //                     title: "Canceled!",
+    //                     text: "Your item has been deleted.",
+    //                     icon: "success"
+    //                 });
+    //                 setControl(!control)
+    //             }
+
+    //         })
+
+    // }
+
+
+
     const { user } = useContext(AuthContext)
     const [item, setItem] = useState([])
     useEffect(() => {
@@ -14,6 +53,42 @@ const MyCard = () => {
     }, [user])
 
     console.log(item);
+
+    const handleDelete = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`http://localhost:5000/delete/${id}`, {
+                        method: 'DELETE'
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.deletedCount > 0) {
+
+                                Swal.fire({
+                                    title: "Deleted!",
+                                    text: "Your item has been deleted.",
+                                    icon: "success"
+                                });
+
+                                const remaining = item.filter(i => i._id !== id);
+                                setItems(remaining)
+                                // console.log('delete');
+                                // setSort(remaining)
+                            }
+                        })
+                }
+            })
+
+    }
     return (
         <div>
             <table className="table">
@@ -21,9 +96,7 @@ const MyCard = () => {
                 <thead>
                     <tr>
                         <th>
-                            {/* <label>
-                                <input type="checkbox" className="checkbox" />
-                            </label> */}
+
                         </th>
                         <th className="text-xl font-bold">Name</th>
                         <th className="text-xl font-bold">Post Title</th>
@@ -62,9 +135,9 @@ const MyCard = () => {
                             }</td>
 
                             <th className="flex flex-row gap-4">
-                                <button
+                                <Link to={`/update/${p._id}`}
                                     className="group relative inline-block text-sm font-medium text-white focus:outline-none focus:ring"
-                                    href="#"
+
                                 >
                                     <span className="absolute inset-0 border border-red-600 group-active:border-red-500"></span>
                                     <span
@@ -72,8 +145,9 @@ const MyCard = () => {
                                     >
                                         Update
                                     </span>
-                                </button>
-                                <button
+                                </Link>
+
+                                <button onClick={() => handleDelete(p._id)}
                                     className="group relative inline-block text-sm font-medium text-white focus:outline-none focus:ring"
                                     href="#"
                                 >

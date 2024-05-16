@@ -2,12 +2,12 @@ import { useContext } from "react";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { IoIosTime } from "react-icons/io";
 import { MdVolunteerActivism } from "react-icons/md";
-import {  useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const CardDetails = () => {
-    const {user}= useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const items = useLoaderData()
     const handleAdditems = (e) => {
         e.preventDefault();
@@ -42,12 +42,13 @@ const CardDetails = () => {
             .then(data => {
                 console.log(data);
                 if (data.insertedId) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'User Added Successfully',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
-                    })
+                    // Swal.fire({
+                    //     title: 'Success!',
+                    //     text: 'User Added Successfully',
+                    //     icon: 'success',
+                    //     confirmButtonText: 'Cool'
+                    // })
+                    alert('User Requested Successfully')
                 }
             })
     }
@@ -140,7 +141,8 @@ const CardDetails = () => {
                                         </div>
 
                                         <div className="flex justify-around mt-4 items-center ">
-                                            <button className="inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400">Request</button>                                        </div>
+                                            <button className="inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400">Request</button>
+                                        </div>
 
                                     </form>
 

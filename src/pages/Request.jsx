@@ -4,37 +4,8 @@ import Swal from "sweetalert2";
 const Request = () => {
     const [item, setItem] = useState([])
     const [control, setControl] = useState(false)
-
-    const handleDelete = id => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        })
-        fetch(`http://localhost:5000/delete/${id}`, {
-            method: 'DELETE',
-
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                // setItem(data)
-                console.log(data);
-                if (data.deletedCount > 0) {
-                    Swal.fire({
-                        title: "Canceled!",
-                        text: "Your item has been deleted.",
-                        icon: "success"
-                    });
-                    setControl(!control)
-                }
-
-            })
-
-    }
+    
+   
 
 
     const [volunteer, setVolunteer] = useState([])
@@ -43,6 +14,37 @@ const Request = () => {
             .then(res => res.json())
             .then(data => setVolunteer(data))
     }, [control])
+    const handleDelete = id => {
+        Swal.fire({
+           title: "Are you sure?",
+           text: "You won't be able to revert this!",
+           icon: "warning",
+           showCancelButton: true,
+           confirmButtonColor: "#3085d6",
+           cancelButtonColor: "#d33",
+           confirmButtonText: "Yes, delete it!"
+       })
+       fetch(`http://localhost:5000/delete/${id}`, {
+           method: 'DELETE',
+
+       })
+           .then((res) => res.json())
+           .then((data) => {
+               // setItem(data)
+               console.log(data);
+               if (data.deletedCount > 0) {
+                   Swal.fire({
+                       title: "Canceled!",
+                       text: "Your item has been deleted.",
+                       icon: "success"
+                   });
+                   const remaining = volunteer.filter(v => v._id !==id)
+                   setVolunteer(remaining)
+               }
+
+           })
+
+   }
     return (
         <div>
 

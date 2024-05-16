@@ -9,43 +9,43 @@ import Swal from "sweetalert2";
 const AddData = () => {
     const { user } = useContext(AuthContext)
     const handleAddItem = (e) => {
-e.preventDefault();
-const form = e.target;
+        e.preventDefault();
+        const form = e.target;
 
-const Thumbnail = form.Thumbnail.value;
-const PostTitle = form.PostTitle.value;
-const Description = form.Description.value;
-const Category = form.Category.value;
-const Location = form.Location.value;
-const VolunteersNeeded = form.VolunteersNeeded.value;
-const Deadline = form.Deadline.value;
-const OrganizerName = form.OrganizerName.value;
-const email = user.email;
+        const Thumbnail = form.Thumbnail.value;
+        const PostTitle = form.PostTitle.value;
+        const Description = form.Description.value;
+        const Category = form.Category.value;
+        const Location = form.Location.value;
+        const VolunteersNeeded = form.VolunteersNeeded.value;
+        const Deadline = form.Deadline.value;
+        const OrganizerName = form.OrganizerName.value;
+        const email = user.email;
 
-const newUsers = { Thumbnail, PostTitle, Description, Category, Location, VolunteersNeeded, Deadline, email, OrganizerName }
-console.log(newUsers);
+        const newUsers = { Thumbnail, PostTitle, Description, Category, Location, VolunteersNeeded, Deadline, email, OrganizerName }
+        console.log(newUsers);
 
         // send data to server
-fetch('http://localhost:5000/volunteerInfo', {
-    method: 'POST',
-    headers: {
-        "content-type": "application/json"
-    },
-    body: JSON.stringify(newUsers)
-})
+        fetch('http://localhost:5000/volunteerInfo', {
+            method: 'POST',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(newUsers)
+        })
 
-    .then(res => res.json())
-    .then(data => {
-        console.log(data);
-        if (data.insertedId) {
-            Swal.fire({
-                title: 'Success!',
-                text: 'User Added Successfully',
-                icon: 'success',
-                confirmButtonText: 'Cool'
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'User Added Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                }
             })
-        }
-    })
     }
     return (
         <div>
@@ -206,13 +206,13 @@ fetch('http://localhost:5000/volunteerInfo', {
 
                                         name="OrganizerName"
                                         className="mt-1 w-full border border-black p-4 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-                                        // defaultValue={user.
-                                        //     displayName}
+                                    // defaultValue={user.
+                                    //     displayName}
                                     />
                                 </div>
                                 <div className="col-span-6 sm:col-span-3">
                                     <label className="block text-sm font-medium text-gray-700">
-                                         Email
+                                        Email
                                     </label>
 
                                     <input

@@ -15,6 +15,7 @@ import CardDetails from './pages/CardDetails';
 import AllVolunteer from './pages/AllVolunteer';
 import MyCard from './pages/MyCard';
 import Request from './pages/Request';
+import Update from './pages/Update';
 // import MyCard from './pages/MyCard';
 
 const router = createBrowserRouter([
@@ -52,11 +53,16 @@ const router = createBrowserRouter([
       },
       {
         path: '/myCard',
-        element:<MyCard></MyCard>
+        element: <MyCard></MyCard>
       },
       {
-        path:'/request',
+        path: '/request',
         element: <Request></Request>
+      },
+      {
+        path: '/update/:id',
+        element: <Update></Update>,
+        loader: ({ params }) =>fetch(`http://localhost:5000/volunteerInfo/${params.id}`)
       }
 
     ]
