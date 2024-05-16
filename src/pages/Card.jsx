@@ -17,7 +17,7 @@ const Card = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-16 gap-6">
                 {
-                    volunteer.map(v => <div key={v._id} >
+                    volunteer.slice(0,6).map(v => <div key={v._id} >
 
 
                         <article className="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-lg">
