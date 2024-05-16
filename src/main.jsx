@@ -14,6 +14,7 @@ import AddData from './pages/AddData';
 import CardDetails from './pages/CardDetails';
 import AllVolunteer from './pages/AllVolunteer';
 import MyCard from './pages/MyCard';
+import Request from './pages/Request';
 // import MyCard from './pages/MyCard';
 
 const router = createBrowserRouter([
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path: '/myCard',
         element:<MyCard></MyCard>
+      },
+      {
+        path:'/request',
+        element: <Request></Request>
       }
 
     ]
