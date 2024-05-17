@@ -16,6 +16,7 @@ import AllVolunteer from './pages/AllVolunteer';
 import MyCard from './pages/MyCard';
 import Request from './pages/Request';
 import Update from './pages/Update';
+import PrivateRoutes from './PrivateProvider/PrivateRoutes';
 // import MyCard from './pages/MyCard';
 
 const router = createBrowserRouter([
@@ -38,12 +39,12 @@ const router = createBrowserRouter([
       },
       {
         path: 'addData',
-        element: <AddData></AddData>
+        element: <PrivateRoutes><AddData></AddData></PrivateRoutes>
       }
       ,
       {
         path: '/volunteerInfo/:id',
-        element: <CardDetails></CardDetails>,
+        element: <PrivateRoutes><CardDetails></CardDetails></PrivateRoutes>,
         loader: ({ params }) => fetch(`http://localhost:5000/volunteerInfo/${params.id}`)
       },
       {
@@ -53,11 +54,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/myCard',
-        element: <MyCard></MyCard>
+        element: <PrivateRoutes><MyCard></MyCard></PrivateRoutes>
       },
       {
         path: '/request',
-        element: <Request></Request>
+        element: <PrivateRoutes><Request></Request></PrivateRoutes>
       },
       {
         path: '/update/:id',

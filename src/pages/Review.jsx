@@ -1,8 +1,8 @@
 
 const Review = () => {
     return (
-        <div className="flex justify-center items-center gap-4 mt-10 mb-6">
-            <img className="size-1/2" src="https://i.ibb.co/YX3Hpr1/helping-hands-volunteer-support-community-service-graphic.jpg" alt="" />
+        <div className="lg:flex justify-center items-center gap-4 mt-10 mb-6">
+            <img className="lg:size-1/2" src="https://i.ibb.co/YX3Hpr1/helping-hands-volunteer-support-community-service-graphic.jpg" alt="" />
             <div className="bg-slate-200">
                 <div className="collapse collapse-plus bg-base-200">
                     <input type="radio" name="my-accordion-3" defaultChecked />

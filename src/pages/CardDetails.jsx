@@ -1,10 +1,12 @@
+
+
 import { useContext } from "react";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { IoIosTime } from "react-icons/io";
 import { MdVolunteerActivism } from "react-icons/md";
 import { useLoaderData } from "react-router-dom";
-import Swal from "sweetalert2";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const CardDetails = () => {
     const { user } = useContext(AuthContext)
@@ -23,13 +25,13 @@ const CardDetails = () => {
         const VolunteersNeeded = form.VolunteersNeeded.value;
         const Deadline = form.Deadline.value;
         const OrganizerName = form.OrganizerName.value;
-        const OrganizerEmail = user.email;
+        const email = user.email;
         const Suggestion = form.Suggestion.value;
 
-        const newUsers = { Thumbnail, PostTitle, Description, Category, Location, VolunteersNeeded, Deadline, OrganizerEmail, OrganizerName, Suggestion }
+        const newUsers = { Thumbnail, PostTitle, Description, Category, Location, VolunteersNeeded, Deadline, email, OrganizerName, Suggestion }
         console.log(newUsers);
 
-        // server data send
+        // server data send modalInfo
         fetch('http://localhost:5000/modalInfo', {
             method: 'POST',
             headers: {
@@ -42,13 +44,13 @@ const CardDetails = () => {
             .then(data => {
                 console.log(data);
                 if (data.insertedId) {
-                    // Swal.fire({
-                    //     title: 'Success!',
-                    //     text: 'User Added Successfully',
-                    //     icon: 'success',
-                    //     confirmButtonText: 'Cool'
-                    // })
-                    alert('User Requested Successfully')
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'User Requested Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                    })
+                    // alert('User Requested Successfully')
                 }
             })
     }
@@ -132,7 +134,7 @@ const CardDetails = () => {
                                             <label htmlFor="">
                                                 OrganizerEmail
                                             </label>
-                                            <input name="OrganizerEmail" type="text" placeholder="Type here" className="input mb-4 border border-black input-ghost w-full " defaultValue={items.OrganizerEmail} />
+                                            <input name="email" type="text" placeholder="Type here" className="input mb-4 border border-black input-ghost w-full " defaultValue={items.email} />
                                             <label htmlFor="">
                                                 Suggestion
                                             </label>

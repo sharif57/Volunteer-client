@@ -40,11 +40,11 @@ const Banner = () => {
                     <div
                         className="bg-cover bg-center bg-no-repeat h-screen  opacity-80 hero-overlay "
                         style={{
-                            backgroundImage: "url('https://i.ibb.co/p4H5ZgD/winter-forest-background-blue-watercolor-holiday-design.jpg')",
+                            backgroundImage: "url('https://i.ibb.co/bXZNPPg/young-businesswomen-talking-chatting-office.jpg')",
                         }}
                     >
                         <div className='flex flex-col justify-center items-center lg:p-[200px] p-9 lg:w-2/2 mx-auto'>
-                            <h1 className='lg:text-5xl text-center font-bold  mb-4  text-xl bg-gradient-to-r from-pink-600 via-blue-900 to-blue-500 text-transparent bg-clip-text animate-gradient'>Watercolor painting is a painting method that uses pigments .</h1>
+                            <h1 className='lg:text-5xl text-center font-bold  mb-4  text-xl bg-gradient-to-r from-pink-600 via-blue-900 to-blue-500 text-transparent bg-clip-text animate-gradient'>Determine the specific group of students who require tutoring assistance. </h1>
                             <button
                                 className="inline-flex items-center gap-2 rounded border border-indigo-600 bg-indigo-600 px-8 py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
                                 href="#"
@@ -107,11 +107,11 @@ const Banner = () => {
                     <div
                         className="bg-cover bg-center bg-no-repeat h-screen bg-sky-700 opacity-85"
                         style={{
-                            backgroundImage: "url('https://i.ibb.co/YdFyk1b/nature-mountain-displays-radiant-colors-sunset-generative-ai.jpg')",
+                            backgroundImage: "url('https://i.ibb.co/vL35yJn/medium-shot-people-with-food-donations.jpg')",
                         }}
                     >
                         <div className='flex flex-col justify-center items-center lg:p-[200px] p-9 lg:w-2/2 mx-auto'>
-                            <h1 className='lg:text-5xl text-center font-bold  mb-4 text-black text-xl bg-gradient-to-r from-pink-600 via-blue-900 to-blue-500 text-transparent bg-clip-text animate-gradient'>Oil painting is a versatile medium that can be used to create realistic.</h1>
+                            <h1 className='lg:text-5xl text-center font-bold  mb-4 text-black text-xl bg-gradient-to-r from-pink-600 via-blue-900 to-blue-500 text-transparent bg-clip-text animate-gradient'>Craft a clear and compelling message that highlights the importance of the food drive . </h1>
                             <button
                                 className="inline-flex items-center gap-2 rounded border border-indigo-600 bg-indigo-600 px-8 py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
                                 href="#"
@@ -140,11 +140,11 @@ const Banner = () => {
                     <div
                         className="bg-cover bg-center bg-no-repeat h-screen bg-sky-700 opacity-80"
                         style={{
-                            backgroundImage: "url('https://i.ibb.co/bNvB3tn/top-view-chinese-ink-concept.jpg')",
+                            backgroundImage: "url('https://i.ibb.co/xhht5nB/close-up-pacient-talking-doctor-about-vaccine.jpg')",
                         }}
                     >
                         <div className='flex flex-col justify-center items-center lg:p-[200px] p-9 lg:w-2/2 mx-auto'>
-                            <h1 className='lg:text-5xl text-center font-bold  mb-4 text-black text-xl bg-gradient-to-r from-pink-600 via-blue-900 to-blue-500 text-transparent bg-clip-text animate-gradient'>A portrait is a painting, photograph, sculpture, or other artistic .</h1>
+                            <h1 className='lg:text-5xl text-center font-bold  mb-4 text-black text-xl bg-gradient-to-r from-pink-600 via-blue-900 to-blue-500 text-transparent bg-clip-text animate-gradient'> Collaborate with local senior centers, retirement communities</h1>
                             <button
                                 className="inline-flex items-center gap-2 rounded border border-indigo-600 bg-indigo-600 px-8 py-3 text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
                                 href="#"

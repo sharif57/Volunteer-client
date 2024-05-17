@@ -130,7 +130,7 @@ const Update = () => {
                         defaultValue={data.Deadline}
                     />
                 </div>
-                <div className="col-span-6 sm:col-span-3">
+                <div className="col-span-6 sm:col-span-3 disabled:first-line:">
                     <label className="block text-sm font-medium text-gray-700">
                         OrganizerName
                     </label>
@@ -140,11 +140,11 @@ const Update = () => {
 
                         name="OrganizerName"
                         className="mt-1 w-full border border-black p-4 rounded-md  bg-white text-sm text-gray-700 shadow-sm"
-                        defaultValue={user.
+                        defaultValue={user?.
                             displayName}
                     />
                 </div>
-                <div className="col-span-6 sm:col-span-3">
+                <div className="col-span-6 sm:col-span-3 disabled:first-line:">
                     <label className="block text-sm font-medium text-gray-700">
                         Email
                     </label>
@@ -153,7 +153,7 @@ const Update = () => {
                         type="text"
                         name="email"
                         className="mt-1 w-full border border-black p-4 rounded-md  bg-white text-sm text-gray-700 shadow-sm"
-                        defaultValue={user.email}
+                        defaultValue={user?.email}
                     />
                 </div>
 

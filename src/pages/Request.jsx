@@ -1,63 +1,68 @@
-import { useEffect, useState } from "react";
+
+import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import axios from "axios";
 
 const Request = () => {
-    const [item, setItem] = useState([])
-    const [control, setControl] = useState(false)
-    
-   
+    const { user } = useContext(AuthContext)
+    const [volunteer, setVolunteer] = useState([]);
 
+    // useEffect(() => {
+    //     axios(`http://localhost:5000/modalInfo/${user?.email}`)
+    //         .then(data => setVolunteer(data.data))
+    // }, [user]);
 
-    const [volunteer, setVolunteer] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/modalInfo')
-            .then(res => res.json())
-            .then(data => setVolunteer(data))
-    }, [control])
-    const handleDelete = id => {
+        axios(`http://localhost:5000/volunteer/${user?.email}`, { withCredentials: true })
+            .then(res => {
+                setVolunteer(res.data)
+            })
+    }, [user])
+
+    const handleDelete = (id) => {
         Swal.fire({
-           title: "Are you sure?",
-           text: "You won't be able to revert this!",
-           icon: "warning",
-           showCancelButton: true,
-           confirmButtonColor: "#3085d6",
-           cancelButtonColor: "#d33",
-           confirmButtonText: "Yes, delete it!"
-       })
-       fetch(`http://localhost:5000/delete/${id}`, {
-           method: 'DELETE',
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/delete/${id}`, {
+                    method: 'DELETE',
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            const updatedVolunteer = volunteer.filter(item => item._id !== id);
+                            setVolunteer(updatedVolunteer);
+                            Swal.fire(
+                                "Deleted!",
+                                "Your item has been deleted.",
+                                "success"
+                            );
+                        } else {
+                            Swal.fire(
+                                "Error!",
+                                "Failed to delete the item.",
+                                "error"
+                            );
+                        }
+                    })
+                    .catch(error => console.error('Error deleting item:', error));
+            }
+        });
+    };
 
-       })
-           .then((res) => res.json())
-           .then((data) => {
-               // setItem(data)
-               console.log(data);
-               if (data.deletedCount > 0) {
-                   Swal.fire({
-                       title: "Canceled!",
-                       text: "Your item has been deleted.",
-                       icon: "success"
-                   });
-                   const remaining = volunteer.filter(v => v._id !==id)
-                   setVolunteer(remaining)
-               }
-
-           })
-
-   }
     return (
-        <div>
-
-
+        <div className="overflow-x-auto">
             <table className="table">
-                {/* head */}
                 <thead>
                     <tr>
-                        <th>
-                            {/* <label>
-                                <input type="checkbox" className="checkbox" />
-                            </label> */}
-                        </th>
+                        <th></th>
                         <th className="text-xl font-bold">Name</th>
                         <th className="text-xl font-bold">Email</th>
                         <th className="text-xl font-bold">Location</th>
@@ -66,64 +71,33 @@ const Request = () => {
                     </tr>
                 </thead>
                 <tbody className="divide-y divide-x divide-gray-500">
-                    {/* row 1 */}
-                    <tr>
-
-                    </tr>
-                    {volunteer.map((item) => (
+                    {volunteer.map(item => (
                         <tr className="hover:shadow-lg bg-gray-200" key={item._id}>
-                            <th>
-
-                            </th>
+                            <th></th>
                             <td>
                                 <div className="flex items-center gap-3">
-                                    <div className="avatar">
-
-                                    </div>
+                                    <div className="avatar"></div>
                                     <div>
                                         <div className="font-bold">{item.OrganizerName}</div>
                                     </div>
                                 </div>
                             </td>
-                            <td>
-                                {item.OrganizerEmail}
-                                <br />
-                            </td>
-                            <td>{item.Location
-                            }</td>
-                            <td>{item.Category
-                            }</td>
-
+                            <td>{item.email}</td>
+                            <td>{item.Location}</td>
+                            <td>{item.Category}</td>
                             <th>
                                 <button onClick={() => handleDelete(item._id)}
                                     className="group relative inline-block text-sm font-medium text-white focus:outline-none focus:ring"
-                                    href="#"
                                 >
                                     <span className="absolute inset-0 border border-red-600 group-active:border-red-500"></span>
-                                    <span
-                                        className="block border border-red-600 bg-red-600 px-12 py-3 transition-transform active:border-red-500 active:bg-red-500 group-hover:-translate-x-1 group-hover:-translate-y-1"
-                                    >
+                                    <span className="block border border-red-600 bg-red-600 px-12 py-3 transition-transform active:border-red-500 active:bg-red-500 group-hover:-translate-x-1 group-hover:-translate-y-1">
                                         Cancel
                                     </span>
                                 </button>
                             </th>
-
                         </tr>
                     ))}
-
                 </tbody>
-                {/* foot */}
-                {/* <tfoot>
-                    <tr>
-                        <th></th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Items Name</th>
-                        <th>Stock Status</th>
-                        <th></th>
-                    </tr>
-                </tfoot> */}
-
             </table>
         </div>
     );

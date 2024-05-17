@@ -7,54 +7,22 @@ import { Link } from "react-router-dom";
 const MyCard = () => {
 
     const [items, setItems] = useState([])
-    // const [control, setControl] = useState(false)
-
-    // const handleDelete = id => {
-    //     Swal.fire({
-    //         title: "Are you sure?",
-    //         text: "You won't be able to revert this!",
-    //         icon: "warning",
-    //         showCancelButton: true,
-    //         confirmButtonColor: "#3085d6",
-    //         cancelButtonColor: "#d33",
-    //         confirmButtonText: "Yes, delete it!"
-    //     })
-    //     fetch(`http://localhost:5000/delete/${id}`, {
-    //         method: 'DELETE',
-
-    //     })
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //             // setItem(data)
-    //             console.log(data);
-    //             if (data.deletedCount > 0) {
-    //                 Swal.fire({
-    //                     title: "Canceled!",
-    //                     text: "Your item has been deleted.",
-    //                     icon: "success"
-    //                 });
-    //                 setControl(!control)
-    //             }
-
-    //         })
-
-    // }
+    
 
 
 
     const { user } = useContext(AuthContext)
     const [item, setItem] = useState([])
     useEffect(() => {
-        const getData = async () => {
-            const { data } = await axios(`http://localhost:5000/volunteer/${user?.email}`)
-            setItem(data)
-        }
-        getData()
+         axios(`http://localhost:5000/volunteer/${user?.email}`,{withCredentials: true})
+         .then(res =>{
+            setItem(res.data)
+         })
     }, [user])
 
     console.log(item);
 
-    const handleDelete = id => {
+    const handleDelete = _id => {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -66,7 +34,7 @@ const MyCard = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/delete/${id}`, {
+                    fetch(`http://localhost:5000/delete/${_id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())
@@ -79,8 +47,8 @@ const MyCard = () => {
                                     icon: "success"
                                 });
 
-                                const remaining = item.filter(i => i._id !== id);
-                                setItems(remaining)
+                                const remaining = item.filter(i => i._id !== _id);
+                                setItem(remaining)
                                 // console.log('delete');
                                 // setSort(remaining)
                             }
@@ -90,8 +58,8 @@ const MyCard = () => {
 
     }
     return (
-        <div>
-            <table className="table">
+        <div className="overflow-x-auto">
+            <table className="table ">
                 {/* head */}
                 <thead>
                     <tr>

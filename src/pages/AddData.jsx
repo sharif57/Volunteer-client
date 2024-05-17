@@ -1,6 +1,4 @@
-// import { useContext } from "react";
-// import Swal from "sweetalert2";
-// import { AuthContext } from "../AuthProvider/AuthProvider";
+
 
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
@@ -206,11 +204,10 @@ const AddData = () => {
 
                                         name="OrganizerName"
                                         className="mt-1 w-full border border-black p-4 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-                                    // defaultValue={user.
-                                    //     displayName}
+                                    defaultValue={user?.displayName}
                                     />
                                 </div>
-                                <div className="col-span-6 sm:col-span-3">
+                                <div className="col-span-6 sm:col-span-3 disabled:first-line:">
                                     <label className="block text-sm font-medium text-gray-700">
                                         Email
                                     </label>
@@ -219,7 +216,7 @@ const AddData = () => {
                                         type="text"
                                         name="email"
                                         className="mt-1 w-full border border-black p-4 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
-                                        defaultValue={user.email}
+                                        defaultValue={user?.email} disabled
                                     />
                                 </div>
 
