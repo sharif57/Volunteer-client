@@ -38,7 +38,7 @@ const Navbar = () => {
             <div className='flex-1'>
                 <button className='flex lg:gap-2 items-center'>
                     <img className='w-auto h-7' src='' alt='' />
-                    <Link to={'/'} className='font-bold'>Volunteer</Link>
+                    <Link to={'/'} className='font-bold lg:text-3xl text-primary'>Volunteer</Link>
                 </button>
             </div>
             {/* <div>

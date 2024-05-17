@@ -5,16 +5,16 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import axios from "axios";
 
 const Request = () => {
+    useEffect(() => {
+        document.title = 'Request'
+    }, [])
     const { user } = useContext(AuthContext)
     const [volunteer, setVolunteer] = useState([]);
 
-    // useEffect(() => {
-    //     axios(`http://localhost:5000/modalInfo/${user?.email}`)
-    //         .then(data => setVolunteer(data.data))
-    // }, [user]);
+
 
     useEffect(() => {
-        axios(`http://localhost:5000/volunteer/${user?.email}`, { withCredentials: true })
+        axios(`http://localhost:5000/modalInfo/${user?.email}`, { withCredentials: true })
             .then(res => {
                 setVolunteer(res.data)
             })
@@ -31,7 +31,7 @@ const Request = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/delete/${id}`, {
+                fetch(`http://localhost:5000/delete2/${id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())
@@ -71,7 +71,7 @@ const Request = () => {
                     </tr>
                 </thead>
                 <tbody className="divide-y divide-x divide-gray-500">
-                    {volunteer.map(item => (
+                    {volunteer.length > 0 ? volunteer.map(item => (
                         <tr className="hover:shadow-lg bg-gray-200" key={item._id}>
                             <th></th>
                             <td>
@@ -96,7 +96,12 @@ const Request = () => {
                                 </button>
                             </th>
                         </tr>
-                    ))}
+                    )) : (<>
+                        <div className="col-span-3 text-center mt-8">
+                            <h2 className="text-2xl font-bold">No Volunteer Requests Found</h2>
+                            <p>You have not added any volunteer requests yet.</p>
+                        </div>
+                    </>)}
                 </tbody>
             </table>
         </div>

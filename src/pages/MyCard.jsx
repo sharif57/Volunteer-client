@@ -5,6 +5,9 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 
 const MyCard = () => {
+    useEffect(() => {
+        document.title = 'My Card'
+    }, [])
 
     const [items, setItems] = useState([])
     

@@ -1,9 +1,13 @@
+import { useEffect } from "react";
 import Card from "../pages/Card";
 import Review from "../pages/Review";
 import Banner from "./Banner";
 import Team from "./Team";
 
 const Home = () => {
+    useEffect(() => {
+        document.title = 'Home'
+    }, [])
     return (
         <div>
             <Banner></Banner>

@@ -1,6 +1,6 @@
 
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { IoIosTime } from "react-icons/io";
 import { MdVolunteerActivism } from "react-icons/md";
@@ -9,6 +9,9 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 
 const CardDetails = () => {
+    useEffect(() => {
+        document.title = 'Card Details'
+    }, [])
     const { user } = useContext(AuthContext)
     const items = useLoaderData()
     const handleAdditems = (e) => {
@@ -85,9 +88,6 @@ const CardDetails = () => {
 
                             {/* <Link to={`/volunteerInfo/${items._id}`} */}
 
-
-
-
                             {/* Open the modal using document.getElementById('ID').showModal() method */}
                             <button className="inline-block rounded bg-indigo-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400 mt-5" onClick={() => document.getElementById('my_modal_5').showModal()}>Be a Volunteer</button>
                             <dialog id="my_modal_5" className="modal  modal-bottom sm:modal-middle">
@@ -102,39 +102,39 @@ const CardDetails = () => {
                                             <label htmlFor="">
                                                 Thumbnail
                                             </label>
-                                            <input name="Thumbnail" type="text" placeholder="Type here" className="input border mb-4 border-black input-ghost w-full " defaultValue={items.Thumbnail} />
+                                            <input name="Thumbnail" type="text" placeholder="Type here" className="input border mb-4 border-black input-ghost w-full " defaultValue={items.Thumbnail} disabled/>
                                             <label htmlFor="">
                                                 Post Title
                                             </label>
-                                            <input name="PostTitle" type="text" placeholder="Type here" className="input mb-4 border border-black  input-ghost w-full " defaultValue={items.PostTitle} />
+                                            <input name="PostTitle" type="text" placeholder="Type here" className="input mb-4 border border-black  input-ghost w-full " defaultValue={items.PostTitle} disabled />
                                             <label htmlFor="">
                                                 Description
                                             </label>
-                                            <input name="Description" type="text" placeholder="Type here" className="input mb-4 border border-black  input-ghost w-full " defaultValue={items.Description} />
+                                            <input name="Description" type="text" placeholder="Type here" className="input mb-4 border border-black  input-ghost w-full " defaultValue={items.Description} disabled/>
                                             <label htmlFor="">
                                                 Category
                                             </label>
-                                            <input type="text" name="Category" placeholder="Type here" className="input mb-4 border border-black input-ghost w-full " defaultValue={items.Category} />
+                                            <input type="text" name="Category" placeholder="Type here" className="input mb-4 border border-black input-ghost w-full " defaultValue={items.Category} disabled/>
                                             <label htmlFor="">
                                                 Location
                                             </label>
-                                            <input name="Location" type="text" placeholder="Type here" className="input mb-4 border border-black input-ghost w-full " defaultValue={items.Location} />
+                                            <input name="Location" type="text" placeholder="Type here" className="input mb-4 border border-black input-ghost w-full " defaultValue={items.Location} disabled />
                                             <label htmlFor="">
                                                 VolunteersNeeded
                                             </label>
-                                            <input name="VolunteersNeeded" type="text" placeholder="Type here" className="input mb-4 border border-black input-ghost w-full " defaultValue={items.VolunteersNeeded} />
+                                            <input name="VolunteersNeeded" type="text" placeholder="Type here" className="input mb-4 border border-black input-ghost w-full " defaultValue={items.VolunteersNeeded} disabled />
                                             <label htmlFor="">
                                                 Deadline
                                             </label>
-                                            <input name="Deadline" type="text" placeholder="Type here" className="input border mb-4 border-black input-ghost w-full " defaultValue={items.Deadline} />
+                                            <input name="Deadline" type="text" placeholder="Type here" className="input border mb-4 border-black input-ghost w-full " defaultValue={items.Deadline} disabled/>
                                             <label htmlFor="">
                                                 OrganizerName
                                             </label>
-                                            <input name="OrganizerName" type="text" placeholder="Type here" className="input mb-4 border border-black input-ghost w-full " defaultValue={items.OrganizerName} />
+                                            <input name="OrganizerName" type="text" placeholder="Type here" className="input mb-4 border border-black input-ghost w-full " defaultValue={items.OrganizerName} disabled />
                                             <label htmlFor="">
                                                 OrganizerEmail
                                             </label>
-                                            <input name="email" type="text" placeholder="Type here" className="input mb-4 border border-black input-ghost w-full " defaultValue={items.email} />
+                                            <input name="email" type="text" placeholder="Type here" className="input mb-4 border border-black input-ghost w-full " defaultValue={items.email} disabled/>
                                             <label htmlFor="">
                                                 Suggestion
                                             </label>
@@ -147,7 +147,6 @@ const CardDetails = () => {
                                         </div>
 
                                     </form>
-
 
 
 

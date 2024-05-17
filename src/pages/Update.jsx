@@ -1,9 +1,12 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Update = () => {
+    useEffect(() => {
+        document.title = 'Update Page'
+    }, [])
     const data = useLoaderData()
     const { user } = useContext(AuthContext)
     const handleUpdate = (e) => {
@@ -153,7 +156,7 @@ const Update = () => {
                         type="text"
                         name="email"
                         className="mt-1 w-full border border-black p-4 rounded-md  bg-white text-sm text-gray-700 shadow-sm"
-                        defaultValue={user?.email}
+                        defaultValue={user?.email} disabled
                     />
                 </div>
 
