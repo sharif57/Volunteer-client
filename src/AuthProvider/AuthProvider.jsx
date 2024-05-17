@@ -56,7 +56,7 @@ const AuthProvider = ({ children }) => {
             // if user exits then issue token
             if (currentUser) {
 
-                axios.post('http://localhost:5000/jwt', loggedUser, {
+                axios.post('https://volunteer-server-one.vercel.app/jwt', loggedUser, {
                     withCredentials: true
                 })
                     .then(res => {
@@ -64,7 +64,7 @@ const AuthProvider = ({ children }) => {
                     })
             }
             else {
-                axios('http://localhost:5000/logOut', {}, {
+                axios('https://volunteer-server-one.vercel.app/logOut', {}, {
                     withCredentials: true
                 })
                 .then(res=>{

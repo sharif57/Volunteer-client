@@ -17,7 +17,7 @@ const MyCard = () => {
     const { user } = useContext(AuthContext)
     const [item, setItem] = useState([])
     useEffect(() => {
-         axios(`http://localhost:5000/volunteer/${user?.email}`,{withCredentials: true})
+         axios(`https://volunteer-server-one.vercel.app/volunteer/${user?.email}`,{withCredentials: true})
          .then(res =>{
             setItem(res.data)
          })
@@ -37,7 +37,7 @@ const MyCard = () => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/delete/${_id}`, {
+                    fetch(`https://volunteer-server-one.vercel.app/delete/${_id}`, {
                         method: 'DELETE'
                     })
                         .then(res => res.json())
@@ -135,17 +135,7 @@ const MyCard = () => {
                     ))}
 
                 </tbody>
-                {/* foot */}
-                {/* <tfoot>
-                    <tr>
-                        <th></th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Items Name</th>
-                        <th>Stock Status</th>
-                        <th></th>
-                    </tr>
-                </tfoot> */}
+               
 
             </table>
         </div>

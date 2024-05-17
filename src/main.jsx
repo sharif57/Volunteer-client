@@ -45,12 +45,12 @@ const router = createBrowserRouter([
       {
         path: '/volunteerInfo/:id',
         element: <PrivateRoutes><CardDetails></CardDetails></PrivateRoutes>,
-        loader: ({ params }) => fetch(`http://localhost:5000/volunteerInfo/${params.id}`)
+        loader: ({ params }) => fetch(`https://volunteer-server-one.vercel.app/volunteerInfo/${params.id}`)
       },
       {
         path: '/allVolunteer',
         element: <AllVolunteer></AllVolunteer>,
-        loader: () => fetch('http://localhost:5000/volunteerInfo')
+        loader: () => fetch('https://volunteer-server-one.vercel.app/volunteerInfo')
       },
       {
         path: '/myCard',
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
       {
         path: '/update/:id',
         element: <Update></Update>,
-        loader: ({ params }) =>fetch(`http://localhost:5000/volunteerInfo/${params.id}`)
+        loader: ({ params }) => fetch(`https://volunteer-server-one.vercel.app/volunteerInfo/${params.id}`)
       }
 
     ]

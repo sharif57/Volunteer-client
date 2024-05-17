@@ -14,7 +14,7 @@ const Request = () => {
 
 
     useEffect(() => {
-        axios(`http://localhost:5000/modalInfo/${user?.email}`, { withCredentials: true })
+        axios(`https://volunteer-server-one.vercel.app/modalInfo/${user?.email}`, { withCredentials: true })
             .then(res => {
                 setVolunteer(res.data)
             })
@@ -31,7 +31,7 @@ const Request = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/delete2/${id}`, {
+                fetch(`https://volunteer-server-one.vercel.app/delete2/${id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())

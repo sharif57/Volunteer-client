@@ -88,7 +88,7 @@ const Navbar = () => {
                                         <NavLink to='request' className={({ isActive }) => isActive ? 'text-primary font-bold ' : 'font-bold'}>My Request Post</NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to='/myCard' className={({ isActive }) => isActive ? 'text-primary font-bold ' : 'font-bold'}>My Need Volunteer Post:</NavLink>
+                                        <NavLink to='/myCard' className={({ isActive }) => isActive ? 'text-primary font-bold ' : 'font-bold'}>My Need Volunteer Post</NavLink>
                                     </li>
                                     <label className=" cursor-pointer grid place-items-center ">
                                         <input onChange={handleToggle} type="checkbox" className="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2" />

@@ -14,7 +14,7 @@ const AllVolunteer = () => {
     const [isTableLayout, setIsTableLayout] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/volunteerInfo')
+        fetch('https://volunteer-server-one.vercel.app/volunteerInfo')
             .then(res => res.json())
             .then(data => setOld(data));
     }, []);

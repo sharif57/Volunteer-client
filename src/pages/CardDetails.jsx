@@ -35,7 +35,7 @@ const CardDetails = () => {
         console.log(newUsers);
 
         // server data send modalInfo
-        fetch('http://localhost:5000/modalInfo', {
+        fetch('https://volunteer-server-one.vercel.app/modalInfo', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"

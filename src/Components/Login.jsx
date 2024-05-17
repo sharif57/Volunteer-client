@@ -28,7 +28,7 @@ const Login = () => {
 
                 navigate(location?.state ? location.state : '/')
                 // setSuccess(alert('user login successfully'))
-                axios.post('http://localhost:5000/jwt', user, {withCredentials: true})
+                axios.post('https://volunteer-server-one.vercel.app/jwt', user, {withCredentials: true})
                 setSuccess(
                     setError(Swal.fire({
                         title: 'Success!',

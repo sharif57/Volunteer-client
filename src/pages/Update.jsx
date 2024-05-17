@@ -26,7 +26,7 @@ const Update = () => {
         const newUsers = { Thumbnail, PostTitle, Description, Category, Location, VolunteersNeeded, Deadline, email, OrganizerName }
         console.log(newUsers);
 
-        fetch(`http://localhost:5000/volunteerInfo/${data._id}`, {
+        fetch(`https://volunteer-server-one.vercel.app/volunteerInfo/${data._id}`, {
             method: 'PUT',
             headers: {
                 "content-type": "application/json"
