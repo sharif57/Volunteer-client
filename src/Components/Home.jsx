@@ -12,7 +12,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <Card></Card>
-            <div className="mt-10 w-1/2 mx-auto text-center">
+            <div className="mt-10 lg:mt-16 w-1/2 mx-auto text-center">
                 <h1 className="text-4xl font-bold mb-3">Volunteer Experience Review</h1>
                 <p>Although your volunteer experiences have to do with YOU, it is mainly about what you did for OTHERS. Don't forget: this is a mutual experience for both you and the people impacted by your efforts</p>
             </div>

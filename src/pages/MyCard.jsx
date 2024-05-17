@@ -9,7 +9,7 @@ const MyCard = () => {
         document.title = 'My Card'
     }, [])
 
-    const [items, setItems] = useState([])
+    // const [items, setItems] = useState([])
     
 
 
